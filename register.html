@@ -1,0 +1,242 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register - Ravana Restaurant</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="auth.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="container">
+            <div class="logo">
+                <img src="img/Ravana.png" alt="Ravana Logo">
+                <h1>Ravana Restaurant</h1>
+            </div>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="menu.html">Menu</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="#" id="cartLink">Cart <span class="cart-count">0</span></a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Register Section -->
+    <section class="auth-section">
+        <div class="auth-container register-layout">
+
+            <div class="auth-image-side">
+                <div class="auth-overlay">
+                    <div class="auth-brand">
+                        <img src="img/Ravana.png" alt="Ravana Logo">
+                        <h2>Join Us!</h2>
+                        <p>Create a new account and enjoy exclusive offers</p>
+
+                        <ul class="perks-list">
+                            <li><i class="fas fa-check"></i> Fast Order Tracking</li>
+                            <li><i class="fas fa-check"></i> Special Discounts</li>
+                            <li><i class="fas fa-check"></i> Order History</li>
+                            <li><i class="fas fa-check"></i> Save Favorites</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="auth-form-side">
+                <div class="auth-box">
+
+                    <div class="auth-header">
+                        <h2><i class="fas fa-user-plus"></i> Register</h2>
+                        <p>Create a New Account</p>
+                    </div>
+
+                    <!-- Alert Messages -->
+                    <div class="alert alert-success" id="successAlert" style="display:none;">
+                        <i class="fas fa-check-circle"></i>
+                        <span id="successMsg"></span>
+                    </div>
+
+                    <div class="alert alert-error" id="errorAlert" style="display:none;">
+                        <i class="fas fa-exclamation-circle"></i>
+                        <span id="errorMsg"></span>
+                    </div>
+
+                    <div class="auth-form">
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="firstName">
+                                    <i class="fas fa-user"></i> First Name
+                                </label>
+                                <input type="text" id="firstName" placeholder="First Name" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="lastName">
+                                    <i class="fas fa-user"></i> Last Name
+                                </label>
+                                <input type="text" id="lastName" placeholder="Last Name" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="regEmail">
+                                <i class="fas fa-envelope"></i> Email
+                            </label>
+                            <input type="email" id="regEmail" placeholder="Enter your Email" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="phone">
+                                <i class="fas fa-phone"></i> Phone Number
+                            </label>
+                            <input type="tel" id="phone" placeholder="+94 XX XXXXXXX" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="regPassword">
+                                <i class="fas fa-lock"></i> Password
+                            </label>
+
+                            <div class="password-wrapper">
+                                <input type="password"
+                                       id="regPassword"
+                                       placeholder="Create a Password"
+                                       required
+                                       oninput="checkPasswordStrength(this.value)">
+
+                                <span class="toggle-password"
+                                      onclick="togglePassword('regPassword', this)">
+                                    <i class="fas fa-eye"></i>
+                                </span>
+                            </div>
+
+                            <div class="password-strength">
+                                <div class="strength-bar">
+                                    <div class="strength-fill" id="strengthFill"></div>
+                                </div>
+                                <span class="strength-label" id="strengthLabel"></span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="confirmPassword">
+                                <i class="fas fa-lock"></i> Confirm Password
+                            </label>
+
+                            <div class="password-wrapper">
+                                <input type="password"
+                                       id="confirmPassword"
+                                       placeholder="Re-enter Password"
+                                       required>
+
+                                <span class="toggle-password"
+                                      onclick="togglePassword('confirmPassword', this)">
+                                    <i class="fas fa-eye"></i>
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="address">
+                                <i class="fas fa-map-marker-alt"></i> Address (Optional)
+                            </label>
+
+                            <textarea id="address"
+                                      placeholder="Enter Your Address"
+                                      rows="2"></textarea>
+                        </div>
+
+                        <div class="form-check">
+                            <input type="checkbox" id="agreeTerms" required>
+
+                            <label for="agreeTerms">
+                                I agree to the
+                                <a href="#">Terms and Conditions</a>
+                            </label>
+                        </div>
+
+                        <button class="btn-primary btn-full" onclick="handleRegister()">
+                            <i class="fas fa-user-plus"></i> Register
+                        </button>
+
+                        <div class="divider">
+                            <span>OR</span>
+                        </div>
+
+                        <div class="social-login">
+
+                            <button class="btn-social btn-google">
+                                <i class="fab fa-google"></i>
+                                Register with Google
+                            </button>
+
+                            <button class="btn-social btn-facebook">
+                                <i class="fab fa-facebook-f"></i>
+                                Register with Facebook
+                            </button>
+
+                        </div>
+
+                        <p class="auth-switch">
+                            Already have an account?
+                            <a href="login.html">Login</a>
+                        </p>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+
+            <div class="footer-content">
+
+                <div class="footer-section">
+                    <h3>Ravana Restaurant</h3>
+                    <p>Delivering delicious food with love since 2025</p>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="menu.html">Menu</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Contact Us</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> 38A Beach Road, Addapalam, Nintavur - 10</p>
+                    <p><i class="fas fa-phone"></i> +94 76-7575186</p>
+                    <p><i class="fas fa-envelope"></i> priyapooja0317@gmail.com</p>
+                </div>
+
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2025 Ravana Restaurant. All rights reserved.</p>
+            </div>
+
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script src="auth.js"></script>
+</body>
+</html>
+```
